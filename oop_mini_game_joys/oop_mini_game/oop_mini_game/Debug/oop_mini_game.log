@@ -1,5 +1,0 @@
-﻿  main.cpp
-C:\Users\joys_\OneDrive\바탕 화면\oop_mini_game\oop_mini_game\main.cpp(23,16): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\joys_\OneDrive\바탕 화면\oop_mini_game\oop_mini_game\main.cpp(23,19): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\joys_\OneDrive\바탕 화면\oop_mini_game\oop_mini_game\main.cpp(39,7): warning C4101: 'correctness' :참조되지 않은 지역 변수입니다.
-  oop_mini_game.vcxproj -> C:\Users\joys_\OneDrive\바탕 화면\oop_mini_game\Debug\oop_mini_game.exe
