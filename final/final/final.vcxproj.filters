@@ -80,5 +80,11 @@
     <ClCompile Include="game4_view.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="game2_BURGER.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="game2_main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

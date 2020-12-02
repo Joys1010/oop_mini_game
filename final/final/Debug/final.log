@@ -1,25 +1,23 @@
-﻿  Main.cpp
+﻿  game2_main.cpp
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_BURGER.cpp(99,31): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_BURGER.cpp(185,23): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_BURGER.cpp(185,25): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_BURGER.cpp(231,27): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_BURGER.cpp(244,27): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Main.cpp
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_BURGER.cpp(99,31): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_BURGER.cpp(185,23): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_BURGER.cpp(185,25): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_BURGER.cpp(231,27): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_BURGER.cpp(244,27): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_main.cpp(3,1): warning C4005: 'LEFT': 매크로 재정의
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game1.h(11): message : 'LEFT'의 이전 정의를 참조하십시오.
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game2_main.cpp(4,1): warning C4005: 'RIGHT': 매크로 재정의
+C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game1.h(12): message : 'RIGHT'의 이전 정의를 참조하십시오.
 C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game6.h(19,1): warning C4005: 'UP': 매크로 재정의
 C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game1.h(9): message : 'UP'의 이전 정의를 참조하십시오.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game6.h(20,1): warning C4005: 'LEFT': 매크로 재정의
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game1.h(11): message : 'LEFT'의 이전 정의를 참조하십시오.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game6.h(21,1): warning C4005: 'RIGHT': 매크로 재정의
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game1.h(12): message : 'RIGHT'의 이전 정의를 참조하십시오.
 C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game6.h(22,1): warning C4005: 'DOWN': 매크로 재정의
 C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game1.h(10): message : 'DOWN'의 이전 정의를 참조하십시오.
-  game1.cpp
-  game5_minigame.cpp
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game5_minigame.cpp(109,30): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game5_minigame.cpp(109,45): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game5_minigame.cpp(110,26): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game5_minigame.cpp(110,39): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game5_minigame.cpp(120,16): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game5_minigame.cpp(140,41): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game5_minigame.cpp(141,41): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game5_minigame.cpp(150,33): warning C4244: '-=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game5_minigame.cpp(152,33): warning C4244: '-=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game5_minigame.cpp(154,33): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game5_minigame.cpp(156,33): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   코드를 생성하고 있습니다...
-C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\final\game1.cpp(296): warning C4715: 'Game1::keyControl': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  LINK : C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\Debug\final.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
   final.vcxproj -> C:\Users\charl\OneDrive\문서\GitHub\oop_mini_game\final\Debug\final.exe

@@ -151,6 +151,8 @@
     <ClInclude Include="game4_view.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="game2_BURGER.cpp" />
+    <ClCompile Include="game2_main.cpp" />
     <ClCompile Include="game4_classroom.cpp" />
     <ClCompile Include="game1.cpp" />
     <ClCompile Include="game3.cpp" />
