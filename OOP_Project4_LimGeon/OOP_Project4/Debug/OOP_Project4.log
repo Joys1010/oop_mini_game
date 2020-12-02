@@ -1,0 +1,10 @@
+﻿  CAU_BURGER.cpp
+c:\users\lenovo\source\repos\oop_project4\oop_project4\cau_burger.cpp(183): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+c:\users\lenovo\source\repos\oop_project4\oop_project4\cau_burger.cpp(229): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\lenovo\source\repos\oop_project4\oop_project4\cau_burger.cpp(243): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  main.cpp
+c:\users\lenovo\source\repos\oop_project4\oop_project4\cau_burger.cpp(183): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+c:\users\lenovo\source\repos\oop_project4\oop_project4\cau_burger.cpp(229): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\lenovo\source\repos\oop_project4\oop_project4\cau_burger.cpp(243): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  코드를 생성하고 있습니다...
+  OOP_Project4.vcxproj -> C:\Users\Lenovo\source\repos\OOP_Project4\Debug\OOP_Project4.exe
