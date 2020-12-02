@@ -67,6 +67,7 @@ public:
 				break;
 			case ENTER:
 				LimGeon.stackBurger(selector.getNowIngredient().getIngredient());
+			case 'c':
 
 			default:
 				break;

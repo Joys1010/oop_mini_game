@@ -214,15 +214,15 @@ public:
 			selectorbar[1][3 + 5 * i] = ingredients[i].getIngredient();
 
 
-		gotoxy(0, 19);
+		gotoxy(0, 18);
 		for (int i = 0; i < 100; i++) printf(" ");
 		const char* ingredientName = selector.getNowIngredient().getName();
-		gotoxy(50 - strlen(ingredientName) / 2 - 1, 19);
+		gotoxy(50 - strlen(ingredientName) / 2 - 1, 18);
 		printf("%s", ingredientName);
 
 
 		for (int i = 0; i < 3; i++) {
-			gotoxy(25, 21 + i);
+			gotoxy(25, 20 + i);
 			printf("%s\n", selectorbar[i]);
 		}
 	}
@@ -236,16 +236,17 @@ public:
 	}
 
 	void drawFreshman(Freshman freshman) {
-		gotoxy(7, 10);
-		printf("%s는", freshman.getName());
-		gotoxy(7, 11);
-		printf("%s을 좋아한다.", freshman.getBurger().getName());
+		gotoxy(35, 3);
+		printf("%s는 %s을 좋아한다.", freshman.getName(), freshman.getBurger().getName());
 		vector<Ingredient> recipe = freshman.getBurger().getRecipe();
-		gotoxy(7, 12);
-		printf("레시피:");
-		for (int i = 0; i < recipe.size(); i++) {
-			gotoxy(7, 13 + i);
-			printf("%d번째: %s", i+1, recipe[i].getName());
+		gotoxy(4, 7);
+		printf("-------레시피-------");
+		for (int i = 0; i < recipe.size()+1; i++) {
+			gotoxy(4, 9 + i);
+			if (i != recipe.size())
+				printf("%d번째: %s", i + 1, recipe[i].getName());
+			else
+				printf("--------------------");
 		}
 	}
 };

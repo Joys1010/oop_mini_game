@@ -2,5 +2,11 @@
 c:\users\lenovo\desktop\oop_mini_game\oop_project4_limgeon\oop_project4\cau_burger.cpp(99): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
 c:\users\lenovo\desktop\oop_mini_game\oop_project4_limgeon\oop_project4\cau_burger.cpp(185): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
 c:\users\lenovo\desktop\oop_mini_game\oop_project4_limgeon\oop_project4\cau_burger.cpp(231): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-c:\users\lenovo\desktop\oop_mini_game\oop_project4_limgeon\oop_project4\cau_burger.cpp(246): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\lenovo\desktop\oop_mini_game\oop_project4_limgeon\oop_project4\cau_burger.cpp(244): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  main.cpp
+c:\users\lenovo\desktop\oop_mini_game\oop_project4_limgeon\oop_project4\cau_burger.cpp(99): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\lenovo\desktop\oop_mini_game\oop_project4_limgeon\oop_project4\cau_burger.cpp(185): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+c:\users\lenovo\desktop\oop_mini_game\oop_project4_limgeon\oop_project4\cau_burger.cpp(231): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\lenovo\desktop\oop_mini_game\oop_project4_limgeon\oop_project4\cau_burger.cpp(244): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  코드를 생성하고 있습니다...
   OOP_Project4.vcxproj -> C:\Users\Lenovo\Desktop\oop_mini_game\OOP_Project4_LimGeon\Debug\OOP_Project4.exe
