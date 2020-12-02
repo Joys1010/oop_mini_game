@@ -35,7 +35,7 @@ public :
 	void increaseLife();
 	void decreaseLife();
 	void resetLife();
-	void printAnnounce();
+	// void printAnnounce();
 	int getLevel();
 	void levelUp();
 };
@@ -47,13 +47,19 @@ private:
 	bool state=true;
 public:
 	void setAttribute(int x, int y, int type);
-	void drawArrow();
+	// void drawArrow();
 	int getType();
 	bool getState();
 	void setState(bool state);
 	void setXY(int x, int y);
 	int getX();
 	int getY();
+};
+
+class View {
+public:
+	static void printAnnounce(GameManager gm);
+	static void drawArrow(Arrow ar);
 };
 
 
