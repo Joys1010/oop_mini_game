@@ -64,26 +64,26 @@ void Arrow::drawArrow() {
 	switch (type) {
 	case 0: //目辑
 		SetColor_White;
-		printf("≥");
+		cout << "≥";
 		break;
 	case 1: //up
 		SetColor_Red;
-		printf("°");
+		cout << "°";
 		SetColor_White;
 		break;
 	case 2: //down
 		SetColor_Yellow;
-		printf("″");
+		cout << "″";
 		SetColor_White;
 		break;
 	case 3: //left 
 		SetColor_Green;
-		printf("⒏");
+		cout << "⒏";
 		SetColor_White;
 		break;
 	case 4: //right
 		SetColor_Blue;
-		printf("⒑");
+		cout << "⒑";
 		SetColor_White;
 		break;
 	}
@@ -208,16 +208,7 @@ void Game6::game6() {
 
 int main() {
 	system("mode con cols=100 lines=25 | title 力格"); // 能贾芒 农扁 棺 力格 汲沥
-	//level 1
-	//Arrow arrowArr[53] = { Arrow() };
-	//for (int i = 0; i < 53; i++) {
-	//	arrowArr[i].setAttribute(sw_x[i], sw_y[i], sw_type[i]);
-	//	arrowArr[i].drawArrow();
-	//}
-	//GameManager gm = GameManager();
-	//gm.printAnnounce();
-	//playGame(gm, arrowArr, 53);
-	//
+
 	Game6 game= Game6();
 	game.game6();
 }
