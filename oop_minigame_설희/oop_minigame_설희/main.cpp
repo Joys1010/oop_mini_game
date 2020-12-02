@@ -108,7 +108,8 @@ int Arrow::getY() {
 	return y;
 }
 
-void playGame(GameManager gm, Arrow arrowArr[], int len) {
+
+void Game6::playGame(GameManager gm, Arrow arrowArr[], int len) {
 	char c;
 	int key = 0;
 	while (1) {
@@ -117,7 +118,7 @@ void playGame(GameManager gm, Arrow arrowArr[], int len) {
 			while (!(arrowArr[tmp].getState())) {
 				tmp++;
 			}
-			if (tmp == len-1) { //다 깼을때
+			if (tmp == len - 1) { //다 깼을때
 				if (gm.getLevel() == 1) {
 					gm.resetLife();
 					gm.increaseLife();
@@ -165,7 +166,7 @@ void playGame(GameManager gm, Arrow arrowArr[], int len) {
 				}
 				key = 0;
 			}
-			else if (key ==1 || key == 2 || key == 3 || key == 4) { //다른 방향키
+			else if (key == 1 || key == 2 || key == 3 || key == 4) { //다른 방향키
 				gm.decreaseLife();
 				system("cls");
 				if (gm.getLife() > 0) {
@@ -194,11 +195,7 @@ void playGame(GameManager gm, Arrow arrowArr[], int len) {
 		}
 	}
 }
-
-
-int main() {
-	system("mode con cols=100 lines=25 | title 제목"); // 콘솔창 크기 및 제목 설정
-	//level 1
+void Game6::game6() {
 	Arrow arrowArr[53] = { Arrow() };
 	for (int i = 0; i < 53; i++) {
 		arrowArr[i].setAttribute(sw_x[i], sw_y[i], sw_type[i]);
@@ -207,5 +204,20 @@ int main() {
 	GameManager gm = GameManager();
 	gm.printAnnounce();
 	playGame(gm, arrowArr, 53);
-	
+}
+
+int main() {
+	system("mode con cols=100 lines=25 | title 제목"); // 콘솔창 크기 및 제목 설정
+	//level 1
+	//Arrow arrowArr[53] = { Arrow() };
+	//for (int i = 0; i < 53; i++) {
+	//	arrowArr[i].setAttribute(sw_x[i], sw_y[i], sw_type[i]);
+	//	arrowArr[i].drawArrow();
+	//}
+	//GameManager gm = GameManager();
+	//gm.printAnnounce();
+	//playGame(gm, arrowArr, 53);
+	//
+	Game6 game= Game6();
+	game.game6();
 }
