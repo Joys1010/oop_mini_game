@@ -8,11 +8,11 @@
 #include <vector>
 using namespace std;
 
-void textcolor(int foreground, int background)
-{
-	int color = foreground + background * 16;
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-}
+//void textcolor(int foreground, int background)
+//{
+//	int color = foreground + background * 16;
+//	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+//}
 
 void gotoxy(int x, int y) {
 	COORD pos = { x,y };
@@ -86,7 +86,7 @@ void View::printAnnounce(GameManager gm) {
 }
 
 void View::drawArrow(Arrow ar) {
-	gotoxy(ar.getX() * 2 + 20, ar.getY() + 5);
+	gotoxy(ar.getX() *2 + 20, ar.getY() + 5);
 	switch (ar.getType()) {
 	case 0: //目辑
 		SetColor_White;
@@ -211,20 +211,18 @@ void Game6::playGame(GameManager gm, Arrow arrowArr[], int len) {
 }
 void Game6::game6() {
 	Arrow arrowArr[53] = { Arrow() };
+
 	for (int i = 0; i < 53; i++) {
 		arrowArr[i].setAttribute(sw_x[i], sw_y[i], sw_type[i]);
 		View::drawArrow(arrowArr[i]);
-		//arrowArr[i].drawArrow();
 	}
 	GameManager gm = GameManager();
 	View::printAnnounce(gm);
-	// gm.printAnnounce();
 	playGame(gm, arrowArr, 53);
 }
 
 int main() {
 	system("mode con cols=100 lines=25 | title 力格"); // 能贾芒 农扁 棺 力格 汲沥
-
-	Game6 game= Game6();
+	Game6 game = Game6();
 	game.game6();
 }
