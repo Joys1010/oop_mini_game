@@ -8,68 +8,6 @@
 
 using namespace std;
 
-class Burger {
-private:
-	const char * name;
-	const char * whoLikeThis;
-	const char * recipe;
-public:
-	Burger() {
-
-	}
-
-	Burger(const char* _recipe) {
-		_recipe = recipe;
-	}
-
-	Burger(const char* _name, const char* _recipe) {
-		name = _name;
-		_recipe = recipe;
-	}
-
-	const char* getRecipe() {
-		return recipe;
-	}
-
-	const char* getNmae() {
-		return name;
-	}
-		
-	const char* getWhoLikeThis() {
-		return whoLikeThis;
-	}
-};
-
-class Freshman {
-private:
-	const char* name;
-	Burger FavoriteBurger;
-public:
-	Freshman() {
-
-	}
-
-	Freshman(const char* _name, Burger _FavoriteBurger) {
-		name = _name;
-		FavoriteBurger = _FavoriteBurger;
-	}
-
-	bool isLikeThis(Burger _burger) {
-		if (_burger.getRecipe() == FavoriteBurger.getRecipe())
-			return true;
-		else
-			return false;
-	}
-
-	const char* getName() {
-		return name;
-	}
-
-	Burger getBurger() {
-		return FavoriteBurger;
-	}
-};
-
 class Senior {
 private:
 	vector<char> makedBurger;
@@ -108,6 +46,70 @@ public:
 
 	char getIngredient() {
 		return ingredient;
+	}
+};
+
+class Burger {
+private:
+	const char * name;
+	vector<Ingredient> recipe;
+public:
+	Burger() {
+
+	}
+
+	Burger(vector<Ingredient> _recipe) {
+		recipe = _recipe;
+	}
+
+	Burger(const char* _name, vector<Ingredient> _recipe) {
+		name = _name;
+		recipe = _recipe;
+	}
+
+	vector<Ingredient> getRecipe() {
+		return recipe;
+	}
+
+	const char* getName() {
+		return name;
+	}
+};
+
+class Freshman {
+private:
+	const char* name;
+	Burger FavoriteBurger;
+public:
+	Freshman() {
+
+	}
+
+	Freshman(const char* _name, Burger _FavoriteBurger) {
+		name = _name;
+		FavoriteBurger = _FavoriteBurger;
+	}
+
+	bool isLikeThis(Burger _burger) {
+		vector<Ingredient> myBurgerRecipe = _burger.getRecipe();
+		vector<Ingredient> makedBurgerRecipe = _burger.getRecipe();
+		if (myBurgerRecipe.size() != makedBurgerRecipe.size())
+			return false;
+		else{
+			for (int i = 0; i < myBurgerRecipe.size(); i++) {
+				if (myBurgerRecipe[i].getIngredient() != makedBurgerRecipe[i].getIngredient())
+					return false;
+			}
+			return true;
+		}
+	}
+
+	const char* getName() {
+		return name;
+	}
+
+	Burger getBurger() {
+		return FavoriteBurger;
 	}
 };
 
@@ -234,18 +236,16 @@ public:
 	}
 
 	void drawFreshman(Freshman freshman) {
-		gotoxy(10, 10);
-		printf("%s", freshman.getName());
-		gotoxy(10, 11);
-		printf("%s", freshman.getBurger().getNmae());
-
-		const char* recipe = freshman.getBurger().getRecipe();
-		for (int i = 0; i < strlen(recipe); i++) {
-			printf("s");
-			gotoxy(10, 13 + i);
-			for (int j = 0; j < 3; j++) {
-				printf("%c", recipe[i]);
-			}
+		gotoxy(7, 10);
+		printf("%s는", freshman.getName());
+		gotoxy(7, 11);
+		printf("%s을 좋아한다.", freshman.getBurger().getName());
+		vector<Ingredient> recipe = freshman.getBurger().getRecipe();
+		gotoxy(7, 12);
+		printf("레시피:");
+		for (int i = 0; i < recipe.size(); i++) {
+			gotoxy(7, 13 + i);
+			printf("%d번째: %s", i+1, recipe[i].getName());
 		}
 	}
 };
