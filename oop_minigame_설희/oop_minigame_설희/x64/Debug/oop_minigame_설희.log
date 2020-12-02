@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\jhj01\source\repos\oop_minigame_설희\oop_minigame_설희\main.cpp(18,16): warning C4838:  'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\jhj01\source\repos\oop_minigame_설희\oop_minigame_설희\main.cpp(18,18): warning C4838:  'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  oop_minigame_설희.vcxproj -> C:\Users\jhj01\source\repos\oop_minigame_설희\x64\Debug\oop_minigame_설희.exe
