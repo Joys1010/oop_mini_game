@@ -7,38 +7,82 @@
 #include "game5_minigame.h"
 #include "game5_Scene.h"
 #include "game6.h"
+#include "manager.h"
 
 
 int main()
-{							
+{			
+	int exp;
+	int total_exp = 0;
+
+	Manager total_manager;
+
+	vector <string> info;
+	
+
+	info = total_manager.game_startScreen();
+
+	total_manager.player.setName(info[0]);
+	total_manager.player.setID(info[1]);
+	total_manager.player.setDept(info[2]);
+
+	system("cls");
+
 	Game1 title;			
 	title.init();			
-	title.gLoop(0);			
-						
+	//exp = title.gLoop(0);				
 	system("cls");	
+
+	if (exp > 0) {
+		total_exp += exp * 10;
+	}
 	
 	MiniGame2 miniGame2 = MiniGame2();
-	miniGame2.start();
-	
+	//exp = miniGame2.start();
 	system("cls");
+
+	if (exp > 0) {
+		total_exp += exp * 10;
+	}
 
 	Game3 test;
-	test.display();
+	//exp = test.display();
+	system("cls");
+
+	if (exp > 0) {
+		total_exp += exp * 10;
+	}
+
+	Manager4 game4_manager;
+	exp = game4_manager.managing();
 
 	system("cls");
 
-	Manager game4_manager;
-	game4_manager.managing();
+	if (exp > 0) {
+		total_exp += exp * 10;
 
-	system("cls");
+	}
 
 	Game5 test2;
-	test2.gLoop(0);
+	//exp = test2.gLoop(0);
 
 	system("cls");
 
+	if (exp > 0) {
+		total_exp += exp * 10;
+	}
+
 	Game6 test1;
-	test1.game6();
+	//exp = test1.game6();
+	system("cls");
+
+	if (exp > 0) {
+		total_exp += exp * 10;
+	}
+
+
+	total_manager.player.setExp(total_exp);
+	total_manager.game_endScreen(total_manager.player);
 
 	return 0;
 }
