@@ -19,7 +19,13 @@ void gotoxy2(int x, int y) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
 
-void Manager::managing() {
+int Manager4::managing() {
+
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO ConsoleCursor;
+    ConsoleCursor.bVisible = 0;
+    ConsoleCursor.dwSize = 1;
+    SetConsoleCursorInfo(consoleHandle, &ConsoleCursor);
 
 
     //variable setting
@@ -42,32 +48,32 @@ void Manager::managing() {
     Quiz quiz8;
     Quiz quiz9;
 
-    quiz1.question = "1?";
-    quiz1.answer = "1";
+    quiz1.question = "How many credits do I need to take in my major to graduate from our department?";
+    quiz1.answer = "84";
 
-    quiz2.question = "2?";
+    quiz2.question = "Which of the following is not required 전공 필수) for our major? \n 1. Algorithm 2. OOP 3. Data Structure 4. Computer Architecture";
     quiz2.answer = "2";
 
-    quiz3.question = "3?";
-    quiz3.answer = "3";
+    quiz3.question = "What programming language do you use in your OOP class?";
+    quiz3.answer = "C++";
 
-    quiz4.question = "4?";
-    quiz4.answer = "4";
+    quiz4.question = "Which college does our department belong to?";
+    quiz4.answer = "Software";
 
-    quiz5.question = "5?";
-    quiz5.answer = "5";
+    quiz5.question = "In which building is the department office of our department?";
+    quiz5.answer = "310";
 
-    quiz6.question = "6?";
-    quiz6.answer = "6";
+    quiz6.question = "What is the largest building in our school?";
+    quiz6.answer = "310";
 
-    quiz7.question = "7?";
-    quiz7.answer = "7";
+    quiz7.question = "When is our school's opening anniversary? (format example :  1/1)";
+    quiz7.answer = "10/11";
 
-    quiz8.question = "8?";
-    quiz8.answer = "8";
+    quiz8.question = "Which of the following buildings does not have a student cafeteria? \n 1. 310 2. 208 3. 308 4. 303";
+    quiz8.answer = "2";
 
-    quiz9.question = "9?";
-    quiz9.answer = "9";
+    quiz9.question = "Which building is the PC room of our department?";
+    quiz9.answer = "208";
 
 
     //classroom setting
@@ -88,6 +94,8 @@ void Manager::managing() {
     //first map view
     map = gameView.startView();
 
+    int life = 5;
+
 
     //movement
     int posX = 20;
@@ -99,6 +107,8 @@ void Manager::managing() {
     //문의 위치를 넘어가면 화면이 슉 바뀌도록
     while (1)
     {
+        gotoxy2(0, 0);
+        cout << "life : " << life << endl;
         if (_kbhit())   // 키보드 입력 들어오면 1반환 
         {
             //
@@ -335,34 +345,36 @@ void Manager::managing() {
 
                 if (correctness) {
                     cout << endl;
-                    cout << "                correct" << endl;
+                    cout << "                 =====CORRECT=====" << endl;
                     meetProf = false;
                 }
                 else { //wrong인 경우의 view
-                    cout << "                wrong" << endl;
+                    life--;
+                    cout << "\n                 =====WRONG=====" << endl;
                     meetProf = false;
                 }
 
 
-                if (room == 2) { //correct인 경우의 view
+                if (room == 2 && correctness == TRUE) { //correct인 경우의 view
+                      
 
-
-                    cout << "                You find OOP class!!" << endl;
+                    cout << "           =====You find OOP class!!=====" << endl;
                     cout << "                Class name : " << tmp_room.class_name << endl;
                     cout << "                Professor : " << tmp_room.professor << endl;
                     cout << "                Student number : " << tmp_room.student_num << endl;
 
-                    cout << "                =====CLEAR=====" << endl;
+                    cout << "\n                  =====CLEAR=====" << endl;
 
                     //흐름에 따라서 map 변경
                     Sleep(3000);
                     //clrscr();
                     system("cls");
-                    break;
+                    
+                    return life;
                 }
 
-                else {
-                    cout << "                It's not OOP class!!" << endl;
+                else if (room != 2){
+                    cout << "\n                It's not OOP class!!" << endl;
                     cout << "                Try agin, find OOP class" << endl;
                     Sleep(3000);
                     //clrscr();
@@ -372,6 +384,19 @@ void Manager::managing() {
                     map = gameView.startView();
                     gotoxy2(posX, posY);
                     printf("★");
+                }
+                else if (room == 2 && correctness == FALSE) {
+                    cout << "\n                It's OOP class!!" << endl;
+                    cout << "                Try agin, Pass the quiz " << endl;
+                    Sleep(3000);
+                    //clrscr();
+                    system("cls");
+                    posX = 20;
+                    posY = 16;
+                    map = gameView.startView();
+                    gotoxy2(posX, posY);
+                    printf("★");
+
                 }
             }
         }
