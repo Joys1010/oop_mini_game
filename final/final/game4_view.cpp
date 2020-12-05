@@ -124,7 +124,7 @@ string View4::quizView(Classroom enter_room) {
     bool correctness;
 
     int map[1][42] = {
-    { 0 ,0 ,0, 0 ,0 ,0 ,0 ,0, 1 ,1 ,1 ,1 ,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
+    { 1 ,1 ,1, 1 ,1 ,1 ,1 ,1, 1 ,1 ,1 ,1 ,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
     };
 
     for (int i = 0; i < 1; i++)
@@ -141,8 +141,8 @@ string View4::quizView(Classroom enter_room) {
 
     //question print
 
-    cout << "                ";
-    cout << "Question : " << class_question << endl;
+    //cout << "                ";
+    cout << "Question : \n\n" << class_question << endl;
 
     for (int i = 0; i < 1; i++)
     {
@@ -156,7 +156,7 @@ string View4::quizView(Classroom enter_room) {
         cout << endl;
     }
 
-    cout << "                ";
+    //cout << "                ";
     cout << "Enter the answer : ";
     cin >> answer;
 

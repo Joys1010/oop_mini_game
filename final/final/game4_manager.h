@@ -6,12 +6,12 @@
 #include "game4_view.h"
 
 
-class Manager {
+class Manager4 {
 
 public:
-	Manager() {
+	Manager4 () {
 
 	};
 
-	void managing();
+	int managing();
 };
