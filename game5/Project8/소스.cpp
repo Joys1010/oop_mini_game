@@ -14,7 +14,10 @@
 int main() {
 
 	Game game;
-	game.gLoop(0);
+	int life = 5;
+	//while (1) {
+	int a = game.life();
+	//}
 	system("pause");
 	return 0;
 }

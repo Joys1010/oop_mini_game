@@ -58,6 +58,7 @@ public:
 	int hitby(Char player, Char boss);
 	int hitby(Item itemA, Char charA);
 	void gLoop(int mapCode);
+	int life();
 
 };
 
