@@ -25,23 +25,24 @@ void gotoxy(int x, int y);
 
 class GameManager {
 private:
-	int level=1;
-	int life=3;
-public :
+	int level = 1;
+	int life = 5;
+public:
 	int getLife();
 	void increaseLife();
 	void decreaseLife();
-	void resetLife();
+	// void resetLife();
+	void setLife();
 	// void printAnnounce();
 	int getLevel();
 	void levelUp();
 };
-	
+
 
 class Arrow {
 private:
 	int x, y, type;
-	bool state=true;
+	bool state = true;
 public:
 	void setAttribute(int x, int y, int type);
 	// void drawArrow();
@@ -70,8 +71,10 @@ private:
 	int flag_y[58] = { 1, 1, 1, 1, 1,2,3,3,4,4,4,4,4,5,5,5,5,6,7,8,8,9,10,11,12,12,12,11,11,10,10,9,8,8,9,10,10,9,8,7,6,5,4,3,3,3,4,5,6,7,8,9,10,11,12,13,14,15 };
 	int flag_type[58] = { 0,1,3,3,1,2,3,4,1,3,2,3,1,1,2,3,1,3,4,3,1,3,1,3,3,4,1,3,2,4,3,3,2,3,4,3,1,2,3,1,1,4,4,4,2,3,3,1,3,2,3,3,1,2,1,3,3,1 };
 
+	// int* arr[2][3] = { {sw_x, sw_y, sw_type}, {flag_x,flag_y,flag_type} };
+
 public:
 	void playGame(GameManager gm, Arrow arrowArr[], int len);
-	void game6();
+	int game6();
 };
 #endif

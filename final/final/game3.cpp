@@ -71,7 +71,7 @@ void Game3::DrawPlayer(int playerY)
 	}
 }
 
-//나무를 그리는 함수
+//장애물을 그리는 함수
 void Game3::DrawObstacle(int OBSTACLEX, int prob)
 {
 	switch (prob)
@@ -116,7 +116,7 @@ void Game3::DrawObstacle(int OBSTACLEX, int prob)
 }
 
 
-//(v2.0) 충돌 했을때 게임오버 그려줌
+//게임오버 그려줌
 void Game3::DrawGameOver()
 {
 	system("cls");
@@ -134,13 +134,13 @@ void Game3::DrawGameOver()
 	system("pause");
 }
 
-//(v2.0) 충돌했으면 true, 아니면 false
+//충돌했으면 true, 아니면 false
 bool Game3::isCollision(const int OBSTACLEX, const int playerY, const int life)
 {
-	//트리의 X가 공룡의 몸체쪽에 있을때,
-	//공룡의 높이가 충분하지 않다면 충돌로 처리
+	//장애물의 X가 플레이어의 몸체쪽에 있을때,
+	//플레이어의 높이가 충분하지 않다면 충돌로 처리
 	GotoXY(0, 0);
-	cout << "OBSTACLEX : " << OBSTACLEX << " playerY : " << playerY << " life : " << life; //이런식으로 적절한 X, Y를 찾습니다.
+	cout << "OBSTACLEX : " << OBSTACLEX << " playerY : " << playerY << " life : " << life; 
 
 	if (OBSTACLEX <= 8 && OBSTACLEX >= 4 &&
 		playerY > 8)
@@ -155,7 +155,7 @@ int Game3::display()
 
 	SetConsoleView();
 
-	while (true)		//(v2.0) 게임 루프
+	while (true)		// 게임 루프
 	{
 	
 		clock_t start, curr;	//점수 변수 초기화
@@ -168,8 +168,8 @@ int Game3::display()
 
 		while (true)	//한 판에 대한 루프
 		{
-
-			//(v2.0) 충돌체크 트리의 x값과 공룡의 y값으로 판단
+			 
+			//충돌체크 장애물과 x값과 플레이어의 y값으로 판단
 			if (isCollision(obstacleX, playerY,life)) {
 				life--;
 				obstacleX = -10;
@@ -231,5 +231,5 @@ int Game3::display()
 		break;
 	}
 
-	return 3;
+	return life;
 }

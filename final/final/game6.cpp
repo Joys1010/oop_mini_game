@@ -8,6 +8,8 @@
 #include <vector>
 using namespace std;
 
+
+
 void gotoxy(int x, int y) {
 	COORD pos = { x,y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
@@ -23,8 +25,11 @@ void GameManager::decreaseLife() {
 void GameManager::increaseLife() {
 	life++;
 }
-void GameManager::resetLife() {
-	life = 3;
+//void GameManager::resetLife() {
+//	life = 5;
+//}
+void GameManager::setLife() {
+	life = 0;
 }
 
 int GameManager::getLevel() {
@@ -120,7 +125,7 @@ void Game6::playGame(GameManager gm, Arrow arrowArr[], int len) {
 			}
 			if (tmp == len - 1) { //다 깼을때
 				if (gm.getLevel() == 1) {
-					gm.resetLife();
+					// gm.resetLife();
 					gm.increaseLife();
 					gm.levelUp();
 					Arrow arrow2[58] = { Arrow() };
@@ -166,59 +171,82 @@ void Game6::playGame(GameManager gm, Arrow arrowArr[], int len) {
 				for (int i = 0; i < len; i++) {
 					if (arrowArr[i].getState())
 						View::drawArrow(arrowArr[i]);
-						//arrowArr[i].drawArrow();
+					//arrowArr[i].drawArrow();
 				}
 				key = 0;
 			}
+
 			else if (key == 1 || key == 2 || key == 3 || key == 4) { //다른 방향키
-				gm.decreaseLife();
-				system("cls");
 				if (gm.getLife() > 0) {
-					View::printAnnounce(gm);
-					//gm.printAnnounce();
-					for (int i = 0; i < len; i++) {
-						if (arrowArr[i].getState())
-							View::drawArrow(arrowArr[i]);
-							//arrowArr[i].drawArrow();
-					}
+					gm.decreaseLife();
 				}
 				else {
-					gm.resetLife();
-					for (int i = 0; i < len; i++) {
-						if (gm.getLevel() == 1) {
-							arrowArr[i].setAttribute(sw_x[i], sw_y[i], sw_type[i]);
-						}
-						else {
-							arrowArr[i].setAttribute(flag_x[i], flag_y[i], flag_type[i]);
-						}
-						arrowArr[i].setState(true);
+					gm.setLife();
+				}
+				// gm.decreaseLife();
+				system("cls");
+				View::printAnnounce(gm);
+				//gm.printAnnounce();
+				for (int i = 0; i < len; i++) {
+					if (arrowArr[i].getState())
 						View::drawArrow(arrowArr[i]);
-						//arrowArr[i].drawArrow();
-					}
-					View::printAnnounce(gm);
-					//gm.printAnnounce();
+					//arrowArr[i].drawArrow();
+				}
+				//if (gm.getLife() > 0) { // 목숨 0개 이상
+				//	View::printAnnounce(gm);
+				//	//gm.printAnnounce();
+				//	for (int i = 0; i < len; i++) {
+				//		if (arrowArr[i].getState())
+				//			View::drawArrow(arrowArr[i]);
+				//			//arrowArr[i].drawArrow();
+				//	}
+				//}
+				//else { //목숨 0개
+				//	gm.setLife();
+				//	
+				//}
+				//else { // 목숨 0 개
+				//	gm.resetLife();
+				//	for (int i = 0; i < len; i++) {
+				//		if (gm.getLevel() == 1) {
+				//			arrowArr[i].setAttribute(sw_x[i], sw_y[i], sw_type[i]);
+				//		}
+				//		else {
+				//			arrowArr[i].setAttribute(flag_x[i], flag_y[i], flag_type[i]);
+				//		}
+				//		arrowArr[i].setState(true);
+				//		View::drawArrow(arrowArr[i]);
+				//		//arrowArr[i].drawArrow();
+				//	}
+				//	View::printAnnounce(gm);
+				//	//gm.printAnnounce();
+				//}
+				//gm.printAnnounce();
+				for (int i = 0; i < len; i++) {
+					if (arrowArr[i].getState())
+						View::drawArrow(arrowArr[i]);
+					//arrowArr[i].drawArrow();
 				}
 				key = 0;
 			}
 		}
 	}
 }
-void Game6::game6() {
+int Game6::game6() {
 	Arrow arrowArr[53] = { Arrow() };
+
 	for (int i = 0; i < 53; i++) {
 		arrowArr[i].setAttribute(sw_x[i], sw_y[i], sw_type[i]);
 		View::drawArrow(arrowArr[i]);
-		//arrowArr[i].drawArrow();
 	}
 	GameManager gm = GameManager();
 	View::printAnnounce(gm);
-	// gm.printAnnounce();
 	playGame(gm, arrowArr, 53);
+	return gm.getLife();
 }
-//
+
 //int main() {
-//	system("mode con cols=100 lines=25 | title 제목"); // 콘솔창 크기 및 제목 설정
-//
-//	Game6 game= Game6();
+//	system("mode con cols=100 lines=25 | title 뮤직톡톡"); // 콘솔창 크기 및 제목 설정
+//	Game6 game = Game6();
 //	game.game6();
 //}
