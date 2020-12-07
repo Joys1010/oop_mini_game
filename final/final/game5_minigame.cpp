@@ -1,3 +1,4 @@
+
 #define CRT_SECURE_NO_WARNINGS
 #include "game5_minigame.h"
 #include "game5_Scene.h"
@@ -8,10 +9,11 @@
 #include <cmath>
 
 using namespace std;
-//#pragma comment(lib,"winmm") 
 
 Game5::Game5() {	//element 초기화
-	MAPX = 50;
+	srand((unsigned int)time(NULL));
+
+	MAPX = 40;
 	MAPY = 25;
 	PI = 3.14159265;
 	NUM_OF_ITEM = 3;
@@ -24,22 +26,20 @@ Game5::Game5() {	//element 초기화
 
 	//boss
 	boss.fig = "♨";
-	//boss.HP = 13;
 	boss.nMoveX = 1;
 	boss.nMoveY = 1;
 	boss.nDist = 1.1;
 	boss.MoveTime = 30;
 	boss.OldTime = clock();
-
 	boss.color = LIGHTRED;
 
 	//players
 	player.fig = "◎";
-	//player.HP = 13;
 	player.nMoveX = 40;
 	player.nMoveY = 20;
 	player.nDist = 1;
 	player.MoveTime = 30;
+
 	player.OldTime = clock();
 
 	banana.fig = "<<<";
@@ -60,8 +60,8 @@ Game5::Game5() {	//element 초기화
 	int pos_x;
 	int pos_y;
 	for (int i = 0; i < NUM_OF_ITEM; i++) {
-		pos_x = rand() % 50;
-		pos_y = rand() % 25;
+		pos_x = rand() % MAPX;
+		pos_y = rand() % MAPY;
 		cau_burger[i].fig = "burger";
 		cau_burger[i].nMoveX = pos_x;
 		cau_burger[i].nMoveY = pos_y;
@@ -72,8 +72,8 @@ Game5::Game5() {	//element 초기화
 		cau_burger[i].color = LIGHTGREEN;
 	}
 	for (int i = 0; i < NUM_OF_ITEM; i++) {
-		pos_x = rand() % 50;
-		pos_y = rand() % 25;
+		pos_x = rand() % MAPX;
+		pos_y = rand() % MAPY;
 		studentIDcard[i].fig = "■";
 		studentIDcard[i].nMoveX = pos_x;
 		studentIDcard[i].nMoveY = pos_y;
@@ -84,9 +84,9 @@ Game5::Game5() {	//element 초기화
 		studentIDcard[i].color = LIGHTCYAN;
 	}
 	for (int i = 0; i < NUM_OF_ITEM; i++) {
-		pos_x = rand() % 50;
-		pos_y = rand() % 25;
-		book[i]. fig = "§▤";
+		pos_x = rand() % MAPX;
+		pos_y = rand() % MAPY;
+		book[i].fig = "§▤";
 		book[i].nMoveX = pos_x;
 		book[i].nMoveY = pos_y;
 		book[i].GET = false;
@@ -96,7 +96,7 @@ Game5::Game5() {	//element 초기화
 		book[i].color = LIGHTMAGENTA;
 	}
 
-	int realItem = rand() % 3; //init geuine item
+	int realItem = rand() % NUM_OF_ITEM; //init geuine item
 	cau_burger[realItem].GET = true;
 	studentIDcard[realItem].GET = true;
 	book[realItem].GET = true;
@@ -142,6 +142,15 @@ void Game5::Update() { //hitby 따로 빼기
 
 	}
 
+	if (boss.nMoveX > MAPX)
+		boss.nMoveX = corr_boss.X;
+	if (boss.nMoveX < 0)
+		boss.nMoveX = corr_boss.X;
+	if (boss.nMoveY > MAPY)
+		boss.nMoveY = corr_boss.Y;
+	if (boss.nMoveY < 0)
+		boss.nMoveY = corr_boss.Y;
+
 
 	if ((CurTime - player.OldTime) > player.MoveTime) {
 		player.OldTime = CurTime;
@@ -174,14 +183,13 @@ void Game5::Update() { //hitby 따로 빼기
 	}
 
 	if (banana.GET == false) {
-		if (banana.nMoveX == boss.nMoveX && banana.nMoveY == boss.nMoveY) {
+		if (hitby(banana, boss)) {
 			boss.nDist = -0.7;
 			banana.GET = true;
 			banana.OldTime = clock();
 			banana.TIMER = true;
 		}
 	}
-
 	if (banana.TIMER == true) {
 		if ((float)(CurTime - banana.OldTime) / CLOCKS_PER_SEC > banana.NewTime) {
 			boss.nDist = 1.1;
@@ -241,17 +249,52 @@ int Game5::hitby(Item itemA, Char charA) {
 		return 1;
 	else
 		return 0;
+
+
+}
+
+
+int Game5::life() {
+	int life = 5;
+	char next;
+	while (1) {
+
+		Game5 game;
+		game.gLoop(0);
+		life--;
+		if (game.succeed() || life == 0)
+			break;
+		GotoXY(MAPX / 2 - 5, MAPY / 2 - 1);
+		cout << "______________________________";
+		GotoXY(MAPX / 2 - 5, MAPY / 2);
+		cout << "input 'y' and ENTER to retry" << endl;
+		GotoXY(MAPX / 2 - 5, MAPY / 2 + 1);
+		cout << "______________________________";
+		GotoXY(MAPX / 2 - 5, MAPY / 2 + 2);
+		setColor(LIGHTRED, 0);
+		cout << "♥";
+		setColor(WHITE, 0);
+		cout << life << endl;;
+		cin >> next;
+		fflush(stdin);
+		cin.clear();
+	}
+	GotoXY(MAPX / 2 - 5, MAPY / 2 - 1);
+	cout << "--------------------" << endl;
+	GotoXY(MAPX / 2 - 5, MAPY / 2);
+	cout << "Go back to next stage!" << endl;
+	GotoXY(MAPX / 2 - 5, MAPY / 2 + 1);
+	cout << "---------------------" << endl;
+
+	return life;
 }
 
 void Game5::gLoop(int mapCode) {
 	Console();
 
 	ScreenInit();
-	Scene();
-
 	srand((unsigned int)time(NULL));
-	//time_t start, end;
-	//start = clock();
+
 
 	while (1) {
 		Update();
@@ -262,16 +305,18 @@ void Game5::gLoop(int mapCode) {
 		}
 		if (succeed())
 			break;
-		//if ((float)(end - start) / CLOCKS_PER_SEC > 30) {
-			//break;
-		//}
 	}
-	cout << "Go back to class!" << endl;
-	//ScreenRelease();
+
+	ScreenRelease();
 }
 
 
 void Game5::GameScreen() {
+
+	for (int i = 0; i < MAPY; i++) {
+		GotoXY(MAPX + 1, i);
+		cout << "|";
+	}
 
 	GotoXY(boss.nMoveX, boss.nMoveY);
 	setColor(boss.color, 0);
@@ -283,60 +328,84 @@ void Game5::GameScreen() {
 		GotoXY(boss.nMoveX + 1, boss.nMoveY - 1);
 		cout << boss_comment.fig;
 	}
-	if (banana.GET == false) {
-		GotoXY(banana.nMoveX, banana.nMoveY);
-		setColor(banana.color, 0);
-		cout << banana.fig;
-		setColor(WHITE, 0);
+	if (banana.TIMER == false) {
+		if (banana.GET == false) {
+			GotoXY(banana.nMoveX, banana.nMoveY);
+			setColor(banana.color, 0);
+			cout << banana.fig;
+			setColor(WHITE, 0);
+		}
+		else {
+			setColor(banana.color, 0);
+			GotoXY(MAPX + 3, 5);
+			cout << banana.fig;
+			setColor(WHITE, 0);
+			GotoXY(MAPX + 3, 6);
+			cout << "banana";
+			setColor(WHITE, 0);
+		}
 	}
 
 	for (int i = 0; i < NUM_OF_ITEM; i++) {
 
-		GotoXY(cau_burger[i].nMoveX, cau_burger[i].nMoveY);
 		if (cau_burger[i].TIMER == true)
 			setColor(DARKGRAY, LIGHTGRAY);
 		else
 			setColor(cau_burger[i].color, RED);
 
 		if (cau_burger[i].GET == true && cau_burger[i].TIMER == true) {
+			GotoXY(MAPX + 3, 9);
+			setColor(cau_burger[i].color, RED);
+			cout << "burger\n";
 		}
-		else
+		else {
+			GotoXY(cau_burger[i].nMoveX, cau_burger[i].nMoveY);
 			cout << cau_burger[i].fig;
+		}
 
-		GotoXY(studentIDcard[i].nMoveX, studentIDcard[i].nMoveY);
 		if (studentIDcard[i].TIMER == true)
 			setColor(LIGHTGRAY, 0);
 		else
 			setColor(studentIDcard[i].color, 0);
-		if (studentIDcard[i].GET == true && studentIDcard[i].TIMER == true) {
-		}
-		else
-			cout << studentIDcard[i].fig;
 
-		GotoXY(book[i].nMoveX, book[i].nMoveY);
+		if (studentIDcard[i].GET == true && studentIDcard[i].TIMER == true) {
+			GotoXY(MAPX + 3, 11);
+			setColor(studentIDcard[i].color, 0);
+			cout << studentIDcard[i].fig;
+			cout << "IDcard";
+		}
+		else {
+			GotoXY(studentIDcard[i].nMoveX, studentIDcard[i].nMoveY);
+			cout << studentIDcard[i].fig;
+		}
+
 		if (book[i].TIMER == true)
 			setColor(LIGHTGRAY, 0);
 		else
 			setColor(book[i].color, 0);
 
 		if (book[i].GET == true && book[i].TIMER == true) {
-		}
-		else
+			GotoXY(MAPX + 3, 14);
+			setColor(book[i].color, 0);
 			cout << book[i].fig;
+			cout << "book";
+		}
+		else {
+			GotoXY(book[i].nMoveX, book[i].nMoveY);
+			cout << book[i].fig;
+		}
 		setColor(WHITE, 0);
 	}
 
 }
 
 void Game5::Draw() {
-	
-
-	GameScreen();
 	ScreenClear();
 
-	//ScreenFlipping();
-}
+	GameScreen();
 
+	ScreenFlipping();
+}
 
 
 int Game5::succeed() {
@@ -344,9 +413,9 @@ int Game5::succeed() {
 	for (int i = 0; i < NUM_OF_ITEM; i++) {
 		if (studentIDcard[i].GET == true && studentIDcard[i].TIMER == true)
 			count++;
-		if (studentIDcard[i].GET == true && studentIDcard[i].TIMER == true)
+		if (book[i].GET == true && book[i].TIMER == true)
 			count++;
-		if (studentIDcard[i].GET == true && studentIDcard[i].TIMER == true)
+		if (cau_burger[i].GET == true && cau_burger[i].TIMER == true)
 			count++;
 	}
 	if (count == 3)

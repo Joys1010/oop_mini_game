@@ -6,11 +6,10 @@
 #include<time.h>
 using namespace std;
 
-
 class Game5 : public Scene {
 
-private:	
-	
+private:
+
 	struct Char {//_Char {
 
 		string fig;
@@ -60,6 +59,7 @@ public:
 	int hitby(Char player, Char boss);
 	int hitby(Item itemA, Char charA);
 	void gLoop(int mapCode);
+	int life();
 
 };
 

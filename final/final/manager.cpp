@@ -82,7 +82,7 @@ void Manager::game_endScreen(Player player) {
 	else if (player.getExp() > 0) {
 		cout << "                               Your EXP is really bad. You must try again." << endl;
 	}
-
+	
 
 
 
