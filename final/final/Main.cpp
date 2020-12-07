@@ -12,7 +12,7 @@
 
 int main()
 {			
-	int exp;
+	int exp=0;
 	int total_exp = 0;
 
 	Manager total_manager;
@@ -30,7 +30,7 @@ int main()
 
 	Game1 title;			
 	title.init();			
-	//exp = title.gLoop(0);				
+	exp = title.gLoop(0);				
 	system("cls");	
 
 	if (exp > 0) {
