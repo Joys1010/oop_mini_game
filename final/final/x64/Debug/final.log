@@ -1,27 +1,14 @@
-﻿  Main.cpp
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game2_BURGER.cpp(124,1): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game2_BURGER.cpp(185,23): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game2_BURGER.cpp(185,25): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game2_BURGER.cpp(220,1): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game2_main.cpp(3,1): warning C4005: 'LEFT': 매크로 재정의
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game1.h(11): message : 'LEFT'의 이전 정의를 참조하십시오.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game2_main.cpp(4,1): warning C4005: 'RIGHT': 매크로 재정의
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game1.h(12): message : 'RIGHT'의 이전 정의를 참조하십시오.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game6.h(19,1): warning C4005: 'UP': 매크로 재정의
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game1.h(9): message : 'UP'의 이전 정의를 참조하십시오.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game6.h(22,1): warning C4005: 'DOWN': 매크로 재정의
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game1.h(10): message : 'DOWN'의 이전 정의를 참조하십시오.
-  game5_minigame.cpp
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game5_minigame.cpp(109,30): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game5_minigame.cpp(109,45): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game5_minigame.cpp(110,26): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game5_minigame.cpp(110,39): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game5_minigame.cpp(120,16): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game5_minigame.cpp(140,41): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game5_minigame.cpp(141,41): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game5_minigame.cpp(159,33): warning C4244: '-=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game5_minigame.cpp(161,33): warning C4244: '-=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game5_minigame.cpp(163,33): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\final\game5_minigame.cpp(165,33): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  game6.cpp
+C:\Users\charl\oop_mini_game\final\final\game6.cpp(14,16): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\charl\oop_mini_game\final\final\game6.cpp(14,18): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  manager.cpp
+C:\Users\charl\oop_mini_game\final\final\game6.h(19,1): warning C4005: 'UP': 매크로 재정의
+C:\Users\charl\oop_mini_game\final\final\game1.h(9): message : 'UP'의 이전 정의를 참조하십시오.
+C:\Users\charl\oop_mini_game\final\final\game6.h(20,1): warning C4005: 'LEFT': 매크로 재정의
+C:\Users\charl\oop_mini_game\final\final\game1.h(11): message : 'LEFT'의 이전 정의를 참조하십시오.
+C:\Users\charl\oop_mini_game\final\final\game6.h(21,1): warning C4005: 'RIGHT': 매크로 재정의
+C:\Users\charl\oop_mini_game\final\final\game1.h(12): message : 'RIGHT'의 이전 정의를 참조하십시오.
+C:\Users\charl\oop_mini_game\final\final\game6.h(22,1): warning C4005: 'DOWN': 매크로 재정의
+C:\Users\charl\oop_mini_game\final\final\game1.h(10): message : 'DOWN'의 이전 정의를 참조하십시오.
   코드를 생성하고 있습니다...
-  final.vcxproj -> C:\Users\Administrator\Desktop\oop333\oop_mini_game\final\x64\Debug\final.exe
+  final.vcxproj -> C:\Users\charl\oop_mini_game\final\x64\Debug\final.exe

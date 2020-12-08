@@ -73,6 +73,7 @@ private:
 public:
 	void playGame(GameManager gm, Arrow arrowArr[], int len);
 	int game6();
+	int game6_display();
 };
 
 #endif

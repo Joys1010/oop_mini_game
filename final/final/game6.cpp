@@ -190,8 +190,9 @@ int Game6::game6() {
 	return gm.getLife();
 }
 
-int main() {
+int Game6::game6_display() {
 	system("mode con cols=100 lines=25 | title game6"); // 콘솔창 크기 및 제목 설정
 	Game6 game = Game6();
-	game.game6();
+	int life= game.game6();
+	return life;
 }

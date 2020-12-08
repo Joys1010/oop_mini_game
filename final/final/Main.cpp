@@ -42,12 +42,12 @@ int main()
 	//exp = miniGame2.start();
 	system("cls");
 
-	if (exp > 0) {
-		total_exp += exp * 10;
-	}
+	//if (exp > 0) {
+	//	total_exp += exp * 10;
+	//}
 
 	Game3 test;
-	//exp = test.display();
+	exp = test.display();
 	system("cls");
 
 	if (exp > 0) {
@@ -72,13 +72,13 @@ int main()
 		total_exp += exp * 10;
 	}
 	
-	//Game6 test1;
-	////exp = test1.game6();
-	//system("cls");
+	Game6 test1;
+	exp = test1.game6();
+	system("cls");
 
-	//if (exp > 0) {
-	//	total_exp += exp * 10;
-	//}
+	if (exp > 0) {
+		total_exp += exp * 10;
+	}
 
 
 	total_manager.player.setExp(total_exp);
