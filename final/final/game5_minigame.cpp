@@ -11,7 +11,7 @@
 using namespace std;
 
 Game5::Game5() {	//element 초기화
-	srand((unsigned int)time(NULL));
+	srand((unsigned int)time(NULL)); //랜덤 설정
 
 	MAPX = 40;
 	MAPY = 25;
@@ -109,9 +109,10 @@ void Game5::Update() { //hitby 따로 빼기
 	COORD coor_player = { player.nMoveX, player.nMoveY };
 	COORD corr_boss = { boss.nMoveX, boss.nMoveY };
 
+	//boss의 움직임
 	if ((CurTime - boss.OldTime) > boss.MoveTime) {
 		boss.OldTime = CurTime;
-
+		//player와의 각도를 계산해서 방향 벡터 설정
 		double theta = acos(sqrt(pow(coor_player.X - corr_boss.X, 2)) / sqrt(pow(coor_player.X - corr_boss.X, 2) +
 			pow(coor_player.Y - corr_boss.Y, 2)));		// 기본 1 사분면
 		if (coor_player.Y - corr_boss.Y <= 0 && coor_player.X - corr_boss.X >= 0) { theta = -theta; }	//4 사분면
@@ -119,6 +120,7 @@ void Game5::Update() { //hitby 따로 빼기
 		if (coor_player.Y - corr_boss.Y <= 0 && coor_player.X - corr_boss.X <= 0) { theta = PI + theta; } // 3 사분면
 		int distance = sqrt(pow(coor_player.X - corr_boss.X, 2) + pow(coor_player.Y - corr_boss.Y, 2));
 
+		//boss 말풍선
 		if (boss_comment.GET == false) {
 			if ((distance) % 5 == 0) {	//일정거리 보스에게 다가가면 힌트를 얻음 
 				int randomB = rand() % 5;
@@ -137,11 +139,13 @@ void Game5::Update() { //hitby 따로 빼기
 			}
 		}
 
+		//boss의 이동
 		boss.nMoveX += boss.nDist * cos(theta);
 		boss.nMoveY += boss.nDist * sin(theta);
 
 	}
 
+	//boss가 map 반경 벗어날 경우
 	if (boss.nMoveX > MAPX)
 		boss.nMoveX = corr_boss.X;
 	if (boss.nMoveX < 0)
@@ -151,10 +155,11 @@ void Game5::Update() { //hitby 따로 빼기
 	if (boss.nMoveY < 0)
 		boss.nMoveY = corr_boss.Y;
 
-
+	//player의 움직임
 	if ((CurTime - player.OldTime) > player.MoveTime) {
 		player.OldTime = CurTime;
 		int tempX = player.nMoveX;
+		//방향키를 사용해 움직임
 		if (GetAsyncKeyState(VK_LEFT))
 			player.nMoveX -= player.nDist;
 		if (GetAsyncKeyState(VK_UP))
@@ -163,7 +168,8 @@ void Game5::Update() { //hitby 따로 빼기
 			player.nMoveY += player.nDist;
 		if (GetAsyncKeyState(VK_RIGHT))
 			player.nMoveX += player.nDist;
-		if (GetAsyncKeyState(VK_SPACE)) { //부스터 아이템
+		//banana 아이템 사용
+		if (GetAsyncKeyState(VK_SPACE)) {
 			if (banana.GET == true) {
 				banana.GET = false;
 				banana.nMoveX = player.nMoveX;
@@ -182,6 +188,7 @@ void Game5::Update() { //hitby 따로 빼기
 			player.nMoveY = MAPY + player.nMoveY;
 	}
 
+	//boss가 banana 아이템과 충돌하는 경우 
 	if (banana.GET == false) {
 		if (hitby(banana, boss)) {
 			boss.nDist = -0.7;
@@ -190,12 +197,13 @@ void Game5::Update() { //hitby 따로 빼기
 			banana.TIMER = true;
 		}
 	}
+	//3초간 player의 반대방향으로 움직임을 유지
 	if (banana.TIMER == true) {
 		if ((float)(CurTime - banana.OldTime) / CLOCKS_PER_SEC > banana.NewTime) {
 			boss.nDist = 1.1;
 		}
 	}
-
+	//boss의 움직임은 item에 의해 방해받음
 	for (int i = 0; i < NUM_OF_ITEM; i++) {
 		if (cau_burger[i].TIMER == false) {
 			if (hitby(cau_burger[i], boss)) {
@@ -216,7 +224,9 @@ void Game5::Update() { //hitby 따로 빼기
 			}
 		}
 	}
-
+	//player가 아이템을 수집하려고 할 때 
+	//가짜 아이템이면 ->  GameScreen에서 회색으로 그림
+	//진짜 아이템이면 아이템 수집 성공
 	for (int i = 0; i < NUM_OF_ITEM; i++) {
 		if (cau_burger[i].TIMER == false) {
 			if (hitby(cau_burger[i], player)) {
@@ -236,14 +246,14 @@ void Game5::Update() { //hitby 따로 빼기
 	}
 }
 
-
+//boss와 player의 충돌
 int Game5::hitby(Char player, Char boss) {
 	if (player.nMoveX == boss.nMoveX && player.nMoveY == boss.nMoveY)
 		return 1;
 	else
 		return 0;
 }
-
+//Char 캐릭터와 Item의 충돌
 int Game5::hitby(Item itemA, Char charA) {
 	if (itemA.nMoveX == charA.nMoveX && itemA.nMoveY == charA.nMoveY)
 		return 1;
@@ -253,7 +263,7 @@ int Game5::hitby(Item itemA, Char charA) {
 
 }
 
-
+//게임 play, life 적용, life가 over 될 때까지 restart
 int Game5::life() {
 	int life = 5;
 	char next;
@@ -276,7 +286,7 @@ int Game5::life() {
 		setColor(WHITE, 0);
 		cout << life << endl;;
 		cin >> next;
-		fflush(stdin);
+		cin.ignore();
 		cin.clear();
 	}
 	GotoXY(MAPX / 2 - 5, MAPY / 2 - 1);
@@ -289,10 +299,10 @@ int Game5::life() {
 	return life;
 }
 
+//게임 play
 void Game5::gLoop(int mapCode) {
 	Console();
 
-	ScreenInit();
 	srand((unsigned int)time(NULL));
 
 
@@ -307,10 +317,9 @@ void Game5::gLoop(int mapCode) {
 			break;
 	}
 
-	ScreenRelease();
 }
 
-
+//게임 스크린 그림 요소
 void Game5::GameScreen() {
 
 	for (int i = 0; i < MAPY; i++) {
@@ -399,17 +408,17 @@ void Game5::GameScreen() {
 
 }
 
+//게임 스크린 그리기
 void Game5::Draw() {
 	ScreenClear();
 
 	GameScreen();
-
-	ScreenFlipping();
 }
 
-
+//게임 성공 여부
 int Game5::succeed() {
 	int count = 0;
+	//아이템 3가지를 모두 수집했는지 count
 	for (int i = 0; i < NUM_OF_ITEM; i++) {
 		if (studentIDcard[i].GET == true && studentIDcard[i].TIMER == true)
 			count++;

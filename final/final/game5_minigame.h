@@ -41,10 +41,10 @@ private:
 	Item studentIDcard[3];//학생증
 	Item book[3];//책
 
-	int MAPX;
-	int MAPY;
+	int MAPX;	//맵의 크기 
+	int MAPY;	//맵의 크기
 	double PI;
-	int NUM_OF_ITEM;
+	int NUM_OF_ITEM;	//아이템 개수
 
 	//comment 클래스
 	string comment[5];
@@ -52,14 +52,14 @@ private:
 public:
 	Game5();
 	~Game5();
-	void Update();
-	void GameScreen();
-	void Draw();
-	int succeed();
-	int hitby(Char player, Char boss);
+	void Update(); //움직임 업데이트
+	void GameScreen();//게임 스크린 그리기
+	void Draw();//게임 스크린과 버퍼 지우기
+	int succeed();//성공 여부 확인
+	int hitby(Char player, Char boss); //충돌 확인
 	int hitby(Item itemA, Char charA);
-	void gLoop(int mapCode);
-	int life();
+	void gLoop(int mapCode); //게임 play 
+	int life(); //게임 play , life 적용
 
 };
 

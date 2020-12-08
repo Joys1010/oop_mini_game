@@ -23,13 +23,10 @@ private:
 	//static int g_nScreenIndex;
 	//static HANDLE g_hScreen[2];
 
-public: 
+public:
 	//Scene();
 	//~Scene();
 	void ScreenClear();
-	void ScreenFlipping();
-	void ScreenInit();
-	void ScreenRelease();
 	void Console();
 	void GotoXY(int x, int y);
 	void setColor(int forground, int background);

@@ -22,32 +22,9 @@ void Scene::setColor(int forground, int background) {
 	SetConsoleTextAttribute(consoleHandle, code);
 }
 
-void Scene::ScreenInit() {
-
-	//CONSOLE_CURSOR_INFO cci;
-	// 커서 숨기기
-	//cci.dwSize = 1;
-	//cci.bVisible = FALSE;
-	//SetConsoleCursorInfo(g_hScreen[0], &cci);
-	//SetConsoleCursorInfo(g_hScreen[1], &cci);
-}
-
-void Scene::ScreenFlipping() {
-	//Sleep(10);
-	//SetConsoleActiveScreenBuffer(g_hScreen[g_nScreenIndex]);
-	//g_nScreenIndex = !g_nScreenIndex;
-}
-
 void Scene::ScreenClear() {
-	//COORD Coor = { 0,0 };
-	//DWORD dw;
-	//FillConsoleOutputCharacter(g_hScreen[g_nScreenIndex], ' ', 80 * 25, Coor, &dw);
-	system("cls");
-}
 
-void Scene::ScreenRelease() {
-	//CloseHandle(g_hScreen[0]);
-	//CloseHandle(g_hScreen[1]);
+	system("cls");
 }
 
 //커서의 위치를 x, y로 이동하는 함수
