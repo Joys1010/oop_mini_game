@@ -225,15 +225,17 @@ int Game1::gLoop(int mapCode) {
 	}
 	else {
 		system("cls");
+		gotoxy(30, 9);
+		cout << "##############################################\n";
 		gotoxy(30, 10);
-		cout << "    GAME CLEAR!\n";
+		cout << "                  GAME CLEAR!\n";
 		gotoxy(30, 11);
-		cout << "式式式式式式式式式式式式式式式式式式\n";
+		cout << "##############################################\n";
 		gotoxy(30, 12);
-		cout << "戌式 TIME RECORD : " << (float)(end - start) / CLOCKS_PER_SEC << "\n" << "蟾";
+		cout << "                  戌式 TIME RECORD : " << (float)(end - start) / CLOCKS_PER_SEC  << "蟾\n";
 		gotoxy(30, 13);
-		cout << "戌式 SAVED LIFE(Ⅵ) : " << life << "\n";
-		Sleep(1500);
+		cout << "                  戌式 SAVED LIFE(Ⅵ) : " << life << "\n";
+		Sleep(2500);
 		return life;
 	}
 }

@@ -23,6 +23,7 @@ int main()
 	for (int i = 1; i <= 6; i++) {
 		total_manager.game_loadingScreen(i, total_exp, total_manager.player.getName());
 		total_exp += total_manager.game_playScreen(i);
+		cin.ignore();
 		system("cls");
 	}
 

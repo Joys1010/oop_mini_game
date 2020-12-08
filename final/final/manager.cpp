@@ -64,6 +64,8 @@ int Manager::game_playScreen(int stage) {
 		Game1 title;
 		title.init();
 		life = title.gLoop(0);
+		fflush(stdin);
+		cin.ignore();
 		break;
 	}
 	case 2:
@@ -82,6 +84,7 @@ int Manager::game_playScreen(int stage) {
 	{
 		Manager4 game4_manager;
 		life = game4_manager.managing();
+
 		break;
 	}
 	case 5:
