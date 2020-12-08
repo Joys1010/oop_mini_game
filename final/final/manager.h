@@ -50,14 +50,12 @@ public:
 
 	};
 	vector <string> game_startScreen();
-	int game_playScreen1();
-	int game_playScreen2();
-	int game_playScreen3();
-	int game_playScreen4();
-	int game_playScreen5();
-	int game_playScreen6();
-	void game_loadingScreen();
+	void CursorView(char show);
+	int lifeToExp(int life);
+	int game_playScreen(int stage);
+	void game_loadingScreen(int stage, int exp, string name);
 	void game_endScreen(Player player);
+	
 
 	Player player;
 };

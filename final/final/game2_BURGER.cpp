@@ -90,17 +90,16 @@ public:
         FavoriteBurger = _FavoriteBurger;
     }
 
-    bool isLikeThis(Burger _burger) {
-        vector<Ingredient> myBurgerRecipe = _burger.getRecipe();
-        vector<Ingredient> makedBurgerRecipe = _burger.getRecipe();
+    int isLikeThis(vector<char> makedBurgerRecipe) {
+        vector<Ingredient> myBurgerRecipe = FavoriteBurger.getRecipe();
         if (myBurgerRecipe.size() != makedBurgerRecipe.size())
-            return false;
+            return 2;
         else {
             for (int i = 0; i < myBurgerRecipe.size(); i++) {
-                if (myBurgerRecipe[i].getIngredient() != makedBurgerRecipe[i].getIngredient())
-                    return false;
+                if (myBurgerRecipe[i].getIngredient() != makedBurgerRecipe[i])
+                    return 2;
             }
-            return true;
+            return 1;
         }
     }
 
@@ -149,36 +148,6 @@ public:
 
 class GameDisplay {
 public:
-    void init() {
-        system("mode con cols=100 lines=25 | title CAU_BURGER"); // 콘솔창 크기 및 제목 설정
-        CursorView(0);
-
-        const char* initPanel[] = {
-           "########################################",
-           "#                                      #",
-           "#             'CAU BURGER'             #",
-           "#                                      #",
-           "#       You must satisfiy freshman     #",
-           "#          by making hamburger         #",
-           "#                                      #",
-           "#            [Press Any key]           #",
-           "#                                      #",
-           "########################################"
-        };
-        for (int i = 0; i < 10; i++) {
-            gotoxy(29, 7 + i);
-            printf("%s", initPanel[i]);
-        }
-        for (int i = 0; (!_kbhit()); i++) {
-            gotoxy(29, 14);
-            if (i % 2 == 0)
-                printf("#            [Press Any key]           #");
-            else
-                printf("#                                      #");
-            Sleep(400);
-        }
-        system("cls");
-    }
 
     void gotoxy(int x, int y)
     {
@@ -186,18 +155,7 @@ public:
         SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
     }
 
-    void CursorView(char show)//커서숨기기
-    {
-        HANDLE hConsole;
-        CONSOLE_CURSOR_INFO ConsoleCursor;
-
-        hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-        ConsoleCursor.bVisible = show;
-        ConsoleCursor.dwSize = 1;
-
-        SetConsoleCursorInfo(hConsole, &ConsoleCursor);
-    }
+    
 
     void drawSelector(IngredientSelector selector) {
         vector<Ingredient> ingredients = selector.getIngredients();
@@ -247,6 +205,44 @@ public:
                 printf("%d번째: %s", i + 1, recipe[i].getName());
             else
                 printf("--------------------");
+        }
+    }
+
+    void drawVictory(int life) {
+        const char* initPanel[] = {
+           "                                          ",
+           " ######################################## ",
+           " # the freshman really like this Burger # ",
+           " #           life: ★★★★★            # ",
+           " ######################################## ",
+           "                                          "
+        };
+        for (int i = 0; i < 6; i++) {
+            gotoxy(27, 6 + i);
+            printf("%s", initPanel[i]);
+        }
+        for (int i = 0; i < 5 - life; i++) {
+            gotoxy(54 - i * 2, 9);
+            printf("☆");
+        }
+    }
+
+    void drawDefeat(int life) {
+        const char* initPanel[] = {
+           "                                          ",
+           " ######################################## ",
+           " # the freshman doesn't like this Burger# ",
+           " #           life: ★★★★★           # ",
+           " ######################################## ",
+           "                                          "
+        };
+        for (int i = 0; i < 6; i++) {
+            gotoxy(27, 6 + i);
+            printf("%s", initPanel[i]);
+        }
+        for (int i = 0; i < 5 - life; i++) {
+            gotoxy(54 - i * 2, 9);
+            printf("☆");
         }
     }
 };

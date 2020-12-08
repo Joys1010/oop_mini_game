@@ -7,7 +7,7 @@
 class MiniGame2 {
 private:
     /* Init */
-
+    int life = 5;
     //Game Display Initialize
     GameDisplay display = GameDisplay();
 
@@ -54,31 +54,51 @@ private:
     //Senior Initialize
     Senior LimGeon = Senior();
 public:
-    void start() {
+    int start() {
         /* Process */
-        display.init();
-        while (char key = _getch()) {
-            switch (key) {
-            case LEFT:
-                selector.leftIndex();
-                break;
-            case RIGHT:
-                selector.rightIndex();
-                break;
-            case ENTER:
-                LimGeon.stackBurger(selector.getNowIngredient().getIngredient());
-            case 'c':
-
-            default:
-                break;
+        for (int i = 0; i < 4; i++) {
+            system("cls");
+            int nextFreshman = 0;
+            while (1) {
+                display.drawSelector(selector);
+                display.drawBurger(LimGeon.getBurger());
+                display.drawFreshman(freshmans[i]);
+                char key = _getch();
+                switch (key) {
+                case LEFT:
+                    selector.leftIndex();
+                    break;
+                case RIGHT:
+                    selector.rightIndex();
+                    break;
+                case ENTER:
+                    LimGeon.stackBurger(selector.getNowIngredient().getIngredient());
+                    break;
+                case 'l':
+                    nextFreshman = freshmans[i].isLikeThis(LimGeon.getBurger());
+                    system("cls");
+                    if (nextFreshman == 1) {
+                        display.drawVictory(life);
+                    }
+                    else if (nextFreshman == 2) {
+                        if (life > 0)
+                            life -= 1;
+                        display.drawDefeat(life);
+                        i--;
+                    }
+                    LimGeon.CleanUp();
+                    Sleep(2200);
+                    break;
+                default:
+                    break;
+                }
+                if (nextFreshman == 1 || nextFreshman == 2)
+                    break;
             }
-            display.drawSelector(selector);
-            display.drawBurger(LimGeon.getBurger());
-            display.drawFreshman(freshmans[0]);
         }
-
         _getch();
         _getch();
+        return life;
     }
 };
 
