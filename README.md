@@ -1,6 +1,5 @@
 # OOP Mini Game
 
----
 
 - **Object Oriented Programming project**
 
@@ -20,7 +19,6 @@ Screen size, game story (game flow, order), stage time,  Header file-"manager.h"
 
 ## Compile
 
----
 
 **development environment:** Visual Studio 2019
 
@@ -42,7 +40,6 @@ There are codes of mini games in "oop_mini_game/final/final/" folder directory.
 
 ## Object Oriented Concepts
 
----
 
 - **Inheritance**
 
@@ -66,7 +63,6 @@ Private is not accessible from the external class and can only be accessed withi
 
 ## Game Flows
 
----
 
 **Start Scene:** Input Player’s Information ( Name, ID, Department ) and start
 
