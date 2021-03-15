@@ -10,425 +10,127 @@
 
 using namespace std;
 
-Game5::Game5() {	//element ÃÊ±âÈ­
-	srand((unsigned int)time(NULL)); //·£´ı ¼³Á¤
+Game5::Game5() {   //element ì´ˆê¸°í™”
+   srand((unsigned int)time(NULL)); //ëœë¤ ì„¤ì •
 
-	MAPX = 40;
-	MAPY = 25;
-	PI = 3.14159265;
-	NUM_OF_ITEM = 3;
+   MAPX = 40;
+   MAPY = 25;
+   PI = 3.14159265;
+   NUM_OF_ITEM = 3;
 
-	comment[0] = "¹¹°¡ ÁøÂ¥ÀÏ±î?";
-	comment[1] = "ÇÜ¹ö°Å´Â bÁö!";
-	comment[2] = "ÀÚ³×, ¼ö¾÷ µéÀ¸·¯¿Ô³ª?";
-	comment[3] = "¸ØÃç¶ù!";
-	comment[4] = "´«´© ³­³ª";
+   comment[0] = "ë­ê°€ ì§„ì§œì¼ê¹Œ?";
+   comment[1] = "í–„ë²„ê±°ëŠ” bì§€!";
+   comment[2] = "ìë„¤, ìˆ˜ì—… ë“¤ìœ¼ëŸ¬ì™”ë‚˜?";
+   comment[3] = "ë©ˆì¶°ë!";
+   comment[4] = "ëˆˆëˆ„ ë‚œë‚˜";
 
-	//boss
-	boss.fig = "¢Í";
-	boss.nMoveX = 1;
-	boss.nMoveY = 1;
-	boss.nDist = 1.1;
-	boss.MoveTime = 30;
-	boss.OldTime = clock();
-	boss.color = LIGHTRED;
+   //boss
+   boss.fig = "â™¨";
+   boss.nMoveX = 1;
+   boss.nMoveY = 1;
+   boss.nDist = 1.1;
+   boss.MoveTime = 30;
+   boss.OldTime = clock();
+   boss.color = LIGHTRED;
 
-	//players
-	player.fig = "¡İ";
-	player.nMoveX = 40;
-	player.nMoveY = 20;
-	player.nDist = 1;
-	player.MoveTime = 30;
+   //players
+   player.fig = "â—";
+   player.nMoveX = 40;
+   player.nMoveY = 20;
+   player.nDist = 1;
+   player.MoveTime = 30;
 
-	player.OldTime = clock();
+   player.OldTime = clock();
 
-	banana.fig = "<<<";
-	banana.nMoveX = 20;
-	banana.nMoveY = 15;
-	banana.GET = true;
-	banana.OldTime = clock();
-	banana.TIMER = false;
-	banana.NewTime = 3; // 5ÃÊ µ¿¾È À¯Áö
-	banana.color = YELLOW;
+   banana.fig = "<<<";
+   banana.nMoveX = 20;
+   banana.nMoveY = 15;
+   banana.GET = true;
+   banana.OldTime = clock();
+   banana.TIMER = false;
+   banana.NewTime = 3; // 5ì´ˆ ë™ì•ˆ ìœ ì§€
+   banana.color = YELLOW;
 
-	boss_comment.GET = false;
-	boss_comment.TIMER = false;
-	boss_comment.NewTime = 3;
-	boss_comment.OldTime = clock();
+   boss_comment.GET = false;
+   boss_comment.TIMER = false;
+   boss_comment.NewTime = 3;
+   boss_comment.OldTime = clock();
 
-	//ITEMS
-	int pos_x;
-	int pos_y;
-	for (int i = 0; i < NUM_OF_ITEM; i++) {
-		pos_x = rand() % MAPX;
-		pos_y = rand() % MAPY;
-		cau_burger[i].fig = "burger";
-		cau_burger[i].nMoveX = pos_x;
-		cau_burger[i].nMoveY = pos_y;
-		cau_burger[i].GET = false;
-		cau_burger[i].OldTime = clock();
-		cau_burger[i].TIMER = false;
-		cau_burger[i].NewTime = 3; // 5ÃÊ µ¿¾È À¯Áö
-		cau_burger[i].color = LIGHTGREEN;
-	}
-	for (int i = 0; i < NUM_OF_ITEM; i++) {
-		pos_x = rand() % MAPX;
-		pos_y = rand() % MAPY;
-		studentIDcard[i].fig = "¡á";
-		studentIDcard[i].nMoveX = pos_x;
-		studentIDcard[i].nMoveY = pos_y;
-		studentIDcard[i].GET = false;
-		studentIDcard[i].OldTime = clock();
-		studentIDcard[i].TIMER = false;
-		studentIDcard[i].NewTime = 3; // 5ÃÊ µ¿¾È À¯Áö
-		studentIDcard[i].color = LIGHTCYAN;
-	}
-	for (int i = 0; i < NUM_OF_ITEM; i++) {
-		pos_x = rand() % MAPX;
-		pos_y = rand() % MAPY;
-		book[i].fig = "¡×¢Ç";
-		book[i].nMoveX = pos_x;
-		book[i].nMoveY = pos_y;
-		book[i].GET = false;
-		book[i].OldTime = clock();
-		book[i].TIMER = false;
-		book[i].NewTime = 3; // 5ÃÊ µ¿¾È À¯Áö
-		book[i].color = LIGHTMAGENTA;
-	}
+   //ITEMS
+   int pos_x;
+   int pos_y;
+   for (int i = 0; i < NUM_OF_ITEM; i++) {
+      pos_x = rand() % MAPX;
+      pos_y = rand() % MAPY;
+      cau_burger[i].fig = "b";
+      cau_burger[i].nMoveX = pos_x;
+      cau_burger[i].nMoveY = pos_y;
+      cau_burger[i].GET = false;
+      cau_burger[i].OldTime = clock();
+      cau_burger[i].TIMER = false;
+      cau_burger[i].NewTime = 3; // 5ì´ˆ ë™ì•ˆ ìœ ì§€
+      cau_burger[i].color = LIGHTGREEN;
+   }
+   for (int i = 0; i < NUM_OF_ITEM; i++) {
+      pos_x = rand() % MAPX;
+      pos_y = rand() % MAPY;
+      studentIDcard[i].fig = "â– ";
+      studentIDcard[i].nMoveX = pos_x;
+      studentIDcard[i].nMoveY = pos_y;
+      studentIDcard[i].GET = false;
+      studentIDcard[i].OldTime = clock();
+      studentIDcard[i].TIMER = false;
+      studentIDcard[i].NewTime = 3; // 5ì´ˆ ë™ì•ˆ ìœ ì§€
+      studentIDcard[i].color = LIGHTCYAN;
+   }
+   for (int i = 0; i < NUM_OF_ITEM; i++) {
+      pos_x = rand() % MAPX;
+      pos_y = rand() % MAPY;
+      book[i].fig = "â–¤";
+      book[i].nMoveX = pos_x;
+      book[i].nMoveY = pos_y;
+      book[i].GET = false;
+      book[i].OldTime = clock();
+      book[i].TIMER = false;
+      book[i].NewTime = 3; // 5ì´ˆ ë™ì•ˆ ìœ ì§€
+      book[i].color = LIGHTMAGENTA;
+   }
 
-	int realItem = rand() % NUM_OF_ITEM; //init geuine item
-	cau_burger[realItem].GET = true;
-	studentIDcard[realItem].GET = true;
-	book[realItem].GET = true;
+   int realItem = rand() % NUM_OF_ITEM; //init geuine item
+   cau_burger[realItem].GET = true;
+   studentIDcard[realItem].GET = true;
+   book[realItem].GET = true;
 }
 
 Game5::~Game5() {};
 
-void Game5::Update() { //hitby µû·Î »©±â
-	clock_t CurTime = clock();
-	COORD coor_player = { player.nMoveX, player.nMoveY };
-	COORD corr_boss = { boss.nMoveX, boss.nMoveY };
+void Game5::Update() { //hitby ë”°ë¡œ ë¹¼ê¸°
+   clock_t CurTime = clock();
+   COORD coor_player = { player.nMoveX, player.nMoveY };
+   COORD corr_boss = { boss.nMoveX, boss.nMoveY };
 
-	//bossÀÇ ¿òÁ÷ÀÓ
-	if ((CurTime - boss.OldTime) > boss.MoveTime) {
-		boss.OldTime = CurTime;
-		//player¿ÍÀÇ °¢µµ¸¦ °è»êÇØ¼­ ¹æÇâ º¤ÅÍ ¼³Á¤
-		double theta = acos(sqrt(pow(coor_player.X - corr_boss.X, 2)) / sqrt(pow(coor_player.X - corr_boss.X, 2) +
-			pow(coor_player.Y - corr_boss.Y, 2)));		// ±âº» 1 »çºĞ¸é
-		if (coor_player.Y - corr_boss.Y <= 0 && coor_player.X - corr_boss.X >= 0) { theta = -theta; }	//4 »çºĞ¸é
-		if (coor_player.Y - corr_boss.Y >= 0 && coor_player.X - corr_boss.X <= 0) { theta = PI - theta; } //2 »çºĞ¸é
-		if (coor_player.Y - corr_boss.Y <= 0 && coor_player.X - corr_boss.X <= 0) { theta = PI + theta; } // 3 »çºĞ¸é
-		int distance = sqrt(pow(coor_player.X - corr_boss.X, 2) + pow(coor_player.Y - corr_boss.Y, 2));
+   //bossì˜ ì›€ì§ì„
+   if ((CurTime - boss.OldTime) > boss.MoveTime) {
+      boss.OldTime = CurTime;
+      //playerì™€ì˜ ê°ë„ë¥¼ ê³„ì‚°í•´ì„œ ë°©í–¥ ë²¡í„° ì„¤ì •
+      double theta = acos(sqrt(pow(coor_player.X - corr_boss.X, 2)) / sqrt(pow(coor_player.X - corr_boss.X, 2) +
+         pow(coor_player.Y - corr_boss.Y, 2)));      // ê¸°ë³¸ 1 ì‚¬ë¶„ë©´
+      if (coor_player.Y - corr_boss.Y <= 0 && coor_player.X - corr_boss.X >= 0) { theta = -theta; }   //4 ì‚¬ë¶„ë©´
+      if (coor_player.Y - corr_boss.Y >= 0 && coor_player.X - corr_boss.X <= 0) { theta = PI - theta; } //2 ì‚¬ë¶„ë©´
+      if (coor_player.Y - corr_boss.Y <= 0 && coor_player.X - corr_boss.X <= 0) { theta = PI + theta; } // 3 ì‚¬ë¶„ë©´
+      int distance = sqrt(pow(coor_player.X - corr_boss.X, 2) + pow(coor_player.Y - corr_boss.Y, 2));
 
-		//boss ¸»Ç³¼±
-		if (boss_comment.GET == false) {
-			if ((distance) % 5 == 0) {	//ÀÏÁ¤°Å¸® º¸½º¿¡°Ô ´Ù°¡°¡¸é ÈùÆ®¸¦ ¾òÀ½ 
-				int randomB = rand() % 5;
-				boss_comment.fig = comment[randomB];
-				boss_comment.GET = true;
-				boss_comment.OldTime = clock();
-				boss_comment.TIMER = true;
-			}
-		}
-		else {
-			if (boss_comment.TIMER == true) {
-				if ((float)(CurTime - boss_comment.OldTime) / CLOCKS_PER_SEC > boss_comment.NewTime) {
-					boss_comment.GET = false; //ÄÚ¸àÆ®°¡ ÀÚµ¿À¸·Î ²¨Áü
-					boss_comment.TIMER = false;
-				}
-			}
-		}
-
-		//bossÀÇ ÀÌµ¿
-		boss.nMoveX += boss.nDist * cos(theta);
-		boss.nMoveY += boss.nDist * sin(theta);
-
-	}
-
-	//boss°¡ map ¹İ°æ ¹ş¾î³¯ °æ¿ì
-	if (boss.nMoveX > MAPX)
-		boss.nMoveX = corr_boss.X;
-	if (boss.nMoveX < 0)
-		boss.nMoveX = corr_boss.X;
-	if (boss.nMoveY > MAPY)
-		boss.nMoveY = corr_boss.Y;
-	if (boss.nMoveY < 0)
-		boss.nMoveY = corr_boss.Y;
-
-	//playerÀÇ ¿òÁ÷ÀÓ
-	if ((CurTime - player.OldTime) > player.MoveTime) {
-		player.OldTime = CurTime;
-		int tempX = player.nMoveX;
-		//¹æÇâÅ°¸¦ »ç¿ëÇØ ¿òÁ÷ÀÓ
-		if (GetAsyncKeyState(VK_LEFT))
-			player.nMoveX -= player.nDist;
-		if (GetAsyncKeyState(VK_UP))
-			player.nMoveY -= player.nDist;
-		if (GetAsyncKeyState(VK_DOWN))
-			player.nMoveY += player.nDist;
-		if (GetAsyncKeyState(VK_RIGHT))
-			player.nMoveX += player.nDist;
-		//banana ¾ÆÀÌÅÛ »ç¿ë
-		if (GetAsyncKeyState(VK_SPACE)) {
-			if (banana.GET == true) {
-				banana.GET = false;
-				banana.nMoveX = player.nMoveX;
-				banana.nMoveY = player.nMoveY;
-			}
-		}
-
-		//ÀÌµ¿ÀÌ ¸ÊÀ» ³Ñ¾î°¬À» ¶§ ¹İ´ëÆíÀ¸·Î swapµÊ
-		if (player.nMoveX >= MAPX)
-			player.nMoveX = player.nMoveX / MAPX;
-		if (player.nMoveX < 0)
-			player.nMoveX = MAPX + player.nMoveX;
-		if (player.nMoveY >= MAPY)
-			player.nMoveY = player.nMoveY / MAPY;
-		if (player.nMoveY < 0)
-			player.nMoveY = MAPY + player.nMoveY;
-	}
-
-	//boss°¡ banana ¾ÆÀÌÅÛ°ú Ãæµ¹ÇÏ´Â °æ¿ì 
-	if (banana.GET == false) {
-		if (hitby(banana, boss)) {
-			boss.nDist = -0.7;
-			banana.GET = true;
-			banana.OldTime = clock();
-			banana.TIMER = true;
-		}
-	}
-	//3ÃÊ°£ playerÀÇ ¹İ´ë¹æÇâÀ¸·Î ¿òÁ÷ÀÓÀ» À¯Áö
-	if (banana.TIMER == true) {
-		if ((float)(CurTime - banana.OldTime) / CLOCKS_PER_SEC > banana.NewTime) {
-			boss.nDist = 1.1;
-		}
-	}
-	//bossÀÇ ¿òÁ÷ÀÓÀº item¿¡ ÀÇÇØ ¹æÇØ¹ŞÀ½
-	for (int i = 0; i < NUM_OF_ITEM; i++) {
-		if (cau_burger[i].TIMER == false) {
-			if (hitby(cau_burger[i], boss)) {
-				boss.nMoveX = corr_boss.X;
-				boss.nMoveY = corr_boss.Y;
-			}
-		}
-		if (studentIDcard[i].TIMER == false) {
-			if (hitby(studentIDcard[i], boss)) {
-				boss.nMoveX = corr_boss.X;
-				boss.nMoveY = corr_boss.Y;
-			}
-		}
-		if (book[i].TIMER == false) {
-			if (hitby(book[i], boss)) {
-				boss.nMoveX = corr_boss.X;
-				boss.nMoveY = corr_boss.Y;
-			}
-		}
-	}
-	//player°¡ ¾ÆÀÌÅÛÀ» ¼öÁıÇÏ·Á°í ÇÒ ¶§ 
-	//°¡Â¥ ¾ÆÀÌÅÛÀÌ¸é ->  GameScreen¿¡¼­ È¸»öÀ¸·Î ±×¸²
-	//ÁøÂ¥ ¾ÆÀÌÅÛÀÌ¸é ¾ÆÀÌÅÛ ¼öÁı ¼º°ø
-	for (int i = 0; i < NUM_OF_ITEM; i++) {
-		if (cau_burger[i].TIMER == false) {
-			if (hitby(cau_burger[i], player)) {
-				cau_burger[i].TIMER = true;
-			}
-		}
-		if (studentIDcard[i].TIMER == false) {
-			if (hitby(studentIDcard[i], player)) {
-				studentIDcard[i].TIMER = true;
-			}
-		}
-		if (book[i].TIMER == false) {
-			if (hitby(book[i], player)) {
-				book[i].TIMER = true;
-			}
-		}
-	}
-}
-
-//boss¿Í playerÀÇ Ãæµ¹
-int Game5::hitby(Char player, Char boss) {
-	if (player.nMoveX == boss.nMoveX && player.nMoveY == boss.nMoveY)
-		return 1;
-	else
-		return 0;
-}
-//Char Ä³¸¯ÅÍ¿Í ItemÀÇ Ãæµ¹
-int Game5::hitby(Item itemA, Char charA) {
-	if (itemA.nMoveX == charA.nMoveX && itemA.nMoveY == charA.nMoveY)
-		return 1;
-	else
-		return 0;
-
-
-}
-
-//°ÔÀÓ play, life Àû¿ë, life°¡ over µÉ ¶§±îÁö restart
-int Game5::life() {
-	int life = 5;
-	char next;
-	while (1) {
-
-		Game5 game;
-		game.gLoop(0);
-		life--;
-		if (game.succeed() || life == 0)
-			break;
-		GotoXY(MAPX / 2 - 5, MAPY / 2 - 1);
-		cout << "______________________________";
-		GotoXY(MAPX / 2 - 5, MAPY / 2);
-		cout << "input 'y' and ENTER to retry" << endl;
-		GotoXY(MAPX / 2 - 5, MAPY / 2 + 1);
-		cout << "______________________________";
-		GotoXY(MAPX / 2 - 5, MAPY / 2 + 2);
-		setColor(LIGHTRED, 0);
-		cout << "¢¾";
-		setColor(WHITE, 0);
-		cout << life << endl;;
-		cin >> next;
-		cin.ignore();
-		cin.clear();
-	}
-	GotoXY(MAPX / 2 - 5, MAPY / 2 - 1);
-	cout << "--------------------" << endl;
-	GotoXY(MAPX / 2 - 5, MAPY / 2);
-	cout << "Go back to next stage!" << endl;
-	GotoXY(MAPX / 2 - 5, MAPY / 2 + 1);
-	cout << "---------------------" << endl;
-
-	return life;
-}
-
-//°ÔÀÓ play
-void Game5::gLoop(int mapCode) {
-	Console();
-
-	srand((unsigned int)time(NULL));
-
-
-	while (1) {
-		Update();
-		Draw();
-		//end = clock();
-		if (hitby(player, boss)) {
-			break;
-		}
-		if (succeed())
-			break;
-	}
-
-}
-
-//°ÔÀÓ ½ºÅ©¸° ±×¸² ¿ä¼Ò
-void Game5::GameScreen() {
-
-	for (int i = 0; i < MAPY; i++) {
-		GotoXY(MAPX + 1, i);
-		cout << "|";
-	}
-
-	GotoXY(boss.nMoveX, boss.nMoveY);
-	setColor(boss.color, 0);
-	cout << boss.fig;
-	setColor(WHITE, 0);
-	GotoXY(player.nMoveX, player.nMoveY);
-	cout << player.fig;
-	if (boss_comment.TIMER == true && boss_comment.GET == true) {
-		GotoXY(boss.nMoveX + 1, boss.nMoveY - 1);
-		cout << boss_comment.fig;
-	}
-	if (banana.TIMER == false) {
-		if (banana.GET == false) {
-			GotoXY(banana.nMoveX, banana.nMoveY);
-			setColor(banana.color, 0);
-			cout << banana.fig;
-			setColor(WHITE, 0);
-		}
-		else {
-			setColor(banana.color, 0);
-			GotoXY(MAPX + 3, 5);
-			cout << banana.fig;
-			setColor(WHITE, 0);
-			GotoXY(MAPX + 3, 6);
-			cout << "banana";
-			setColor(WHITE, 0);
-		}
-	}
-
-	for (int i = 0; i < NUM_OF_ITEM; i++) {
-
-		if (cau_burger[i].TIMER == true)
-			setColor(DARKGRAY, LIGHTGRAY);
-		else
-			setColor(cau_burger[i].color, RED);
-
-		if (cau_burger[i].GET == true && cau_burger[i].TIMER == true) {
-			GotoXY(MAPX + 3, 9);
-			setColor(cau_burger[i].color, RED);
-			cout << "burger\n";
-		}
-		else {
-			GotoXY(cau_burger[i].nMoveX, cau_burger[i].nMoveY);
-			cout << cau_burger[i].fig;
-		}
-
-		if (studentIDcard[i].TIMER == true)
-			setColor(LIGHTGRAY, 0);
-		else
-			setColor(studentIDcard[i].color, 0);
-
-		if (studentIDcard[i].GET == true && studentIDcard[i].TIMER == true) {
-			GotoXY(MAPX + 3, 11);
-			setColor(studentIDcard[i].color, 0);
-			cout << studentIDcard[i].fig;
-			cout << "IDcard";
-		}
-		else {
-			GotoXY(studentIDcard[i].nMoveX, studentIDcard[i].nMoveY);
-			cout << studentIDcard[i].fig;
-		}
-
-		if (book[i].TIMER == true)
-			setColor(LIGHTGRAY, 0);
-		else
-			setColor(book[i].color, 0);
-
-		if (book[i].GET == true && book[i].TIMER == true) {
-			GotoXY(MAPX + 3, 14);
-			setColor(book[i].color, 0);
-			cout << book[i].fig;
-			cout << "book";
-		}
-		else {
-			GotoXY(book[i].nMoveX, book[i].nMoveY);
-			cout << book[i].fig;
-		}
-		setColor(WHITE, 0);
-	}
-
-}
-
-//°ÔÀÓ ½ºÅ©¸° ±×¸®±â
-void Game5::Draw() {
-	ScreenClear();
-
-	GameScreen();
-}
-
-//°ÔÀÓ ¼º°ø ¿©ºÎ
-int Game5::succeed() {
-	int count = 0;
-	//¾ÆÀÌÅÛ 3°¡Áö¸¦ ¸ğµÎ ¼öÁıÇß´ÂÁö count
-	for (int i = 0; i < NUM_OF_ITEM; i++) {
-		if (studentIDcard[i].GET == true && studentIDcard[i].TIMER == true)
-			count++;
-		if (book[i].GET == true && book[i].TIMER == true)
-			count++;
-		if (cau_burger[i].GET == true && cau_burger[i].TIMER == true)
-			count++;
-	}
-	if (count == 3)
-		return 1;
-	else
-		return 0;
-}
+      //boss ë§í’ì„ 
+      if (boss_comment.GET == false) {
+         if ((distance) % 5 == 0) {   //ì¼ì •ê±°ë¦¬ ë³´ìŠ¤ì—ê²Œ ë‹¤ê°€ê°€ë©´ íŒíŠ¸ë¥¼ ì–»ìŒ 
+            int randomB = rand() % 5;
+            boss_comment.fig = comment[randomB];
+            boss_comment.GET = true;
+            boss_comment.OldTime = clock();
+            boss_comment.TIMER = true;
+         }
+      }
+      else {
+         if (boss_comment.TIMER == true) {
+            if ((float)(CurTime - boss_comment.OldTime) / CLOCKS_PER_SEC > boss_comment.NewTime) {
+               boss_commen
